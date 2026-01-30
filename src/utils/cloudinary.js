@@ -16,7 +16,8 @@ const uploadToCloudinary= async (localFilePath)=>{
         const response=await cloudinary.uploader.upload(localFilePath,{
             resource_type: "auto", // jpeg, png
         });
-        console.log("CLOUDINARY RESPONSE:", response);
+        // console.log("CLOUDINARY RESPONSE:", response);
+        fs.unlinkSync(localFilePath); // remove file from local storage
         return response;
     } catch (error) {
         fs.unlinkSync(localFilePath); // remove file from local storage
